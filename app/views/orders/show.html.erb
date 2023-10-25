@@ -2,12 +2,39 @@
 
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
+    # <h4><%= @line_items.inspect%></h4>
+    <h4>products <%= @products.inspect%></h4>
   </header>
+  <div>
+  <h3>Order Details</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Quantity</th>
+        <th>Item Price</th>
+        <th>Item Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @line_items.each do |entry| %>
+        <tr>
+          <td><%= @products[entry.product_id - 1].name %></td>
+          <td><%= entry.quantity %></td>
+          <td>$<%= number_with_precision(entry.item_price_cents / 100.0, precision: 2) %></td>
+          <td>$<%= number_with_precision(entry.total_price_cents / 100.0, precision: 2) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>
   </div>
 
+  <h4><%= @order.inspect%></h4>
+
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
-</section>
+</section> 
