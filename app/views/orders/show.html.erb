@@ -1,13 +1,48 @@
 <section class="orders-show">
 
   <header class="page-header">
-    <h1>Order #<%= @order.id %></h1>
+    <h2>Order Details</h2>
   </header>
+  <div>
+  <h4>Order Number: <%= @order.id %></h4>
+  <table class="table table-light table table-bordered table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Product Picture</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Item Quantity</th>
+        <th scope="col">Item Price</th>
+        <th scope="col">Item Total</th>
+      </tr>
+    </thead>
+    <% final_total = 0 %>
+    <tbody>
+      <% @line_items.each do |entry|
+        final_total += entry.total_price_cents %>
+        <tr>
+          <td><%= image_tag @products[entry.product_id - 1].image.thumb.url , alt: @products[entry.product_id - 1].name %></td>   
+          <td><%= @products[entry.product_id - 1].name %></td>
+          <td><%= @products[entry.product_id - 1].description %></td>
+          <td><%= entry.quantity %></td>
+          <td>$<%= number_with_precision(entry.item_price_cents / 100.0, precision: 2) %></td>
+          <td>$<%= number_with_precision(entry.total_price_cents / 100.0, precision: 2) %></td>
+        </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>
 
-  <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
-  </div>
+<div class="order-summary jumbotron">
+  <h4>Final Total:</h4>
+  <p>
+    $<%= number_with_precision(final_total/100.0, precision: 2) %>
+  </p>
+  <h4>Email for this purchase:</h4>
+  <p><%= @order.email %></p>
+  <h4>Thank you for your order!</h4>
+</div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
-</section>
+</section> 
