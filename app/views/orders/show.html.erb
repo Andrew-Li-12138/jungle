@@ -5,15 +5,15 @@
   </header>
   <div>
   <h4>Order Number: <%= @order.id %></h4>
-  <table>
+  <table class="table table-light table table-bordered table-hover">
     <thead>
       <tr>
-        <th>Product Picture</th>
-        <th>Product Name</th>
-        <th>Product Description</th>
-        <th>Quantity</th>
-        <th>Item Price</th>
-        <th>Item Total</th>
+        <th scope="col">Product Picture</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Product Description</th>
+        <th scope="col">Item Quantity</th>
+        <th scope="col">Item Price</th>
+        <th scope="col">Item Total</th>
       </tr>
     </thead>
     <% final_total = 0 %>
@@ -31,13 +31,17 @@
         <% end %>
     </tbody>
   </table>
-  <h4> Final Total: $<%= number_with_precision(final_total/100.0 , precision: 2) %> </h4>
-  <h4> Email for this purchase: <%= @order.email %> </h4>
 </div>
 
-  <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
-  </div>
+<div class="order-summary jumbotron">
+  <h4>Final Total:</h4>
+  <p>
+    $<%= number_with_precision(final_total/100.0, precision: 2) %>
+  </p>
+  <h4>Email for this purchase:</h4>
+  <p><%= @order.email %></p>
+  <h4>Thank you for your order!</h4>
+</div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
