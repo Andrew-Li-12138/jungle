@@ -1,0 +1,33 @@
+<div class="container">
+<h1>Signup!</h1>
+
+<%= form_for :user, url: '/users' do |f| %>
+
+  <div class="form-outline mb-3 col-5">
+  Name: <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-outline mb-3 col-5">
+  Email: <%= f.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-outline mb-3 col-5">
+  Password: <%= f.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="form-outline mb-3 col-5">
+  Password Confirmation: <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Submit", class: 'btn btn-primary btn-block mb-4'%>
+
+<% end %>
+
+<div>
+<% if flash[:notice].present? %>
+  <div class="alert alert-info">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+</div>
+</div>

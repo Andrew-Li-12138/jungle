@@ -14,6 +14,11 @@
   <%= render 'layouts/top_nav' %>
 
   <main class="container">
+  <% if current_user %>
+  <p class="mt-3 text-success">Signed in as <%= current_user.name %> | <%= link_to "Logout", '/logout' %></p>
+<% else %>
+ <p class="mt-3 text-success">Please <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup'%> before adding to <%= fa_icon "shopping-cart" %>My Cart</p>
+<% end %>
     <%= yield %>
   </main>
 
