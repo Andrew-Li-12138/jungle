@@ -1,0 +1,23 @@
+<section>
+  <header class="page-header">
+    <h1>Admin &raquo; All Categories</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New Catergory', [:new, :admin, :category], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default products">
+
+    <table class="mx-auto text-center table table-hover table-bordered table-light">
+      <thead>
+        <tr>
+          <th colspan="2">Categories</th>
+        </tr>
+      </thead>
+      <tbody scope="row">
+        <%= render @categories %>
+      </tbody>
+    </table>
+  </div>
+</section>
