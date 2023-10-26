@@ -13,6 +13,7 @@ class SessionsController < ApplicationController
     else
     # If user's login doesn't work, send them back to the login form.
       redirect_to '/login'
+      flash[:notice] = "Wrong email or password. If you don't have an account, please sign up first."
     end
   end
 
@@ -20,5 +21,5 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to '/login'
   end
-  
+
 end

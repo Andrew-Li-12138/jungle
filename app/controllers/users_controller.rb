@@ -8,6 +8,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
+      empty_fields = user.errors.full_messages.join(', ')
+      flash[:notice] = "Fields can't be empty: #{empty_fields}"
       redirect_to '/signup'
     end
   end 
