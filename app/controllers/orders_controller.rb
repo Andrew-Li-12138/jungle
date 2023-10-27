@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @line_items = LineItem.where(order_id: @order.id)
     @products = Product.all
+    @user = User.find(session[:user_id])
   end
 
   def create

@@ -39,8 +39,8 @@
     $<%= number_with_precision(final_total/100.0, precision: 2) %>
   </p>
   <h4>Email for this purchase:</h4>
-  <p><%= @order.email %></p>
-  <h4>Thank you for your order!</h4>
+  <p><%= @user.email %></p>
+  <h4>Thank you, <%= @user.name %>, for your order!</h4>
 </div>
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
