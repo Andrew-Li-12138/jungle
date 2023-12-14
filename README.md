@@ -1,6 +1,6 @@
 # Jungle
 
-A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example.
+A mini e-commerce application built with Ruby on Rails that allows visitors to view, purchase, and review products. Email receipts are sent upon a successful order that uses the Stripe API for secure transactions.
 
 ## Setup
 
